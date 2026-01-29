@@ -6,7 +6,8 @@ export default function HomePage() {
         <main>
             <h1> CPRG 306: Web Development 2 - Assignments </h1>
             <div>
-              <Link href="/week-2">Week 2</Link>
+              <Link href="/week-2" className="text-blue-500 hover:underline">Week 2</Link>
+              <Link href="/week-3" className="text-blue-500 hover:underline ml-4">Week 3</Link>
             </div>
         </main>
     );
