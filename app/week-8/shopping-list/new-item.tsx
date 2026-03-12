@@ -1,7 +1,13 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import type { ItemType } from "./item-list";
+
+type ItemType = {
+  id: string;
+  name: string;
+  quantity: number;
+  category: string;
+};
 
 type NewItemProps = {
   onAddItem: (item: Omit<ItemType, "id">) => void;
