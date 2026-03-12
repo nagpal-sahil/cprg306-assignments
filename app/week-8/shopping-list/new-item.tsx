@@ -2,17 +2,16 @@
 
 import { useState, FormEvent } from "react";
 
-type ItemType = {
+export type ItemType = {
   id: string;
   name: string;
   quantity: number;
   category: string;
 };
 
-type NewItemProps = {
+export type NewItemProps = {
   onAddItem: (item: Omit<ItemType, "id">) => void;
 };
-
 
 export default function NewItem({ onAddItem }: NewItemProps) {
   const [name, setName] = useState("");
