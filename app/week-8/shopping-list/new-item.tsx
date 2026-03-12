@@ -9,7 +9,7 @@ export type ItemType = {
   category: string;
 };
 
-export type NewItemProps = {
+type NewItemProps = {
   onAddItem: (item: Omit<ItemType, "id">) => void;
 };
 
