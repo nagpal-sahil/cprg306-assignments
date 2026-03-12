@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
 
-const AuthContext = createContext();
+const AuthContext = createContext<{ user: any; gitHubSignIn: () => any; firebaseSignOut: () => any } | undefined>(undefined);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
