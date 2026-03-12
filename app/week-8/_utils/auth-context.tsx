@@ -9,24 +9,29 @@ import {
 } from "firebase/auth";
 import { auth } from "./firebase";
 
-const AuthContext = createContext({});
+const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const gitHubSignIn = () => {
+    if (!auth) return Promise.reject(new Error("Auth not initialized"));
     const provider = new GithubAuthProvider();
     return signInWithPopup(auth, provider);
   };
 
   const firebaseSignOut = () => {
+    if (!auth) return Promise.reject(new Error("Auth not initialized"));
     return signOut(auth);
   };
 
   useEffect(() => {
+    if (!auth) return;
+
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
     });
+
     return () => unsubscribe();
   }, []);
 
