@@ -13,6 +13,7 @@ type NewItemProps = {
   onAddItem: (item: Omit<ItemType, "id">) => void;
 };
 
+
 export default function NewItem({ onAddItem }: NewItemProps) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState<number>(1);
