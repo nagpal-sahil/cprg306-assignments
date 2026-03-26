@@ -1,14 +1,17 @@
+// app/week-10/_services/shopping-list-service.js
 import { db } from "../_utils/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, query } from "firebase/firestore";
 
-
+// Get all items for a specific user
 export async function getItems(userId) {
   const items = [];
 
-  const itemsRef = collection(db, "users", userId, "items");
-  const snapshot = await getDocs(itemsRef);
+  // users/{userId}/items
+  const itemsColRef = collection(db, "users", userId, "items");
+  const q = query(itemsColRef);
+  const querySnapshot = await getDocs(q);
 
-  snapshot.forEach((doc) => {
+  querySnapshot.forEach((doc) => {
     items.push({
       id: doc.id,
       ...doc.data(),
@@ -18,10 +21,9 @@ export async function getItems(userId) {
   return items;
 }
 
+// Add a new item for a specific user
 export async function addItem(userId, item) {
-  const itemsRef = collection(db, "users", userId, "items");
-
-  const docRef = await addDoc(itemsRef, item);
-
+  const itemsColRef = collection(db, "users", userId, "items");
+  const docRef = await addDoc(itemsColRef, item);
   return docRef.id;
 }

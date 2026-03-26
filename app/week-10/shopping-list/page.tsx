@@ -6,6 +6,7 @@ import { ItemList } from "./item-list";
 import MealIdeas from "./meal-ideas";
 import { useUserAuth } from "../_utils/auth-context";
 import { getItems, addItem } from "../_services/shopping-list-service";
+import { AuthContextProvider } from "../_utils/auth-context";
 
 export default function Page() {
   const { user } = useUserAuth();
@@ -14,7 +15,6 @@ export default function Page() {
 
   async function loadItems() {
     if (!user) return;
-
     const userItems = await getItems(user.uid);
     setItems(userItems);
   }
@@ -42,7 +42,7 @@ export default function Page() {
     let text = name.split(",")[0];
     text = text.replace(
       /([\u2700-\u27BF]|[\uE000-\uF8FF]|[\u2011-\u26FF])/g,
-      ""
+      "",
     );
     return text.trim();
   }
