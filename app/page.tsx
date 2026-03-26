@@ -13,7 +13,7 @@ export default function HomePage() {
                     <Link href="/week-6" className="text-blue-500 hover:underline ml-4">Week 6</Link>
                     <Link href="/week-7" className="text-blue-500 hover:underline ml-4">Week 7</Link>
                     <Link href="/week-8" className="text-blue-500 hover:underline ml-4">Week 8</Link>
-                    <Link href="/week-10" className="text-blue-500 hover:underline ml-4">Week 10</Link>
+                    <Link href="/week-10/shopping-list" className="text-blue-500 hover:underline ml-4">Week 10</Link>
             </div>
         </main>
     );
