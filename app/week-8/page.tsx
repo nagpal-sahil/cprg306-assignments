@@ -9,8 +9,6 @@ export default function Page() {
   const handleLogin = async () => {
     try {
       await gitHubSignIn();
-      // Optional: redirect to shopping list after login
-      // router.push("/week-8/shopping-list");
     } catch (error) {
       console.error("Login error:", error);
     }
